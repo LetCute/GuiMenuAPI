@@ -1,8 +1,5 @@
-name: GuiMenu
+name: GuiMenuAPI
 version: '${project.version}'
 main: net.letcute.guimenu.GuiMenu
 api-version: '1.16'
 author: LetCute
-commands:
-  guidemo:
-    description: gui demo

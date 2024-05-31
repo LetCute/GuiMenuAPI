@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.letcute</groupId>
-  <artifactId>guimenu</artifactId>
+  <artifactId>guimenuapi</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>GuiMenu</name>
+  <name>GuiMenuAPI</name>
 
   <properties>
     <java.version>8</java.version>
