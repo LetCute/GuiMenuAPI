@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class GuiManager {
 
-    private static Map<String, Gui> guiList = new HashMap<>();
-    private static Map<String, String> titleToGuiMap = new HashMap<>();
+    private static final Map<String, Gui> guiList = new HashMap<>();
+    private static final Map<String, String> titleToGuiMap = new HashMap<>();
 
     public static void registerGuiMenu(JavaPlugin plugin){
         plugin.getServer().getPluginManager().registerEvents(new ListenerEvent(), plugin);
