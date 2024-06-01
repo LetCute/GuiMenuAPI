@@ -33,9 +33,9 @@ public class GuiDemo implements Gui {
     @Override
     public void open(Player player) {
         GuiBuilder guiBuilder = new GuiBuilder(title, 54);
-        guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", 11);
-        guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", 12);
-        guiBuilder.createItem(Material.GRASS_BLOCK, "Island", 13);
+        guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
+        guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
+        guiBuilder.createItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
         guiBuilder.openMenu(player);
     }
 
@@ -73,16 +73,16 @@ action(): Handles item click events within the GUI.<br>
 
 The GuiBuilder class is used to build and manage the inventory GUI:<br>
 new GuiBuilder(title, 54): Creates a new GUI with the specified title and number of slots.<br>
-guiBuilder.createItem(Material, "DisplayName", position): Adds an item to the GUI at the specified position.<br>
+guiBuilder.createItem(Material, "DisplayName", lore ,position): Adds an item to the GUI at the specified position.<br>
 guiBuilder.openMenu(player): Opens the GUI for the specified player.<br>
 Example Code Snippets<br>
 #### Open Function
 ````java
 public void open(Player player) {
     GuiBuilder guiBuilder = new GuiBuilder(title, 54);
-    guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", 11);
-    guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", 12);
-    guiBuilder.createItem(Material.GRASS_BLOCK, "Island", 13);
+    guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
+    guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
+    guiBuilder.createItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
     guiBuilder.openMenu(player);
 }
 
