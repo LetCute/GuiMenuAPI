@@ -1,5 +1,6 @@
 package net.letcute.guimenu;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,5 +35,10 @@ public class GuiManager {
             throw new RuntimeException("Name gui not found");
         }
         gui.open(player);
+    }
+
+    public static boolean isPlayerOnBedrock(Player player) {
+        String version = Bukkit.getVersion().toLowerCase();
+        return version.contains("bedrock");
     }
 }

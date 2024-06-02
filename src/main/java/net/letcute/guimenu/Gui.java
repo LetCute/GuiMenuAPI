@@ -9,5 +9,5 @@ public interface Gui {
 
     void open(Player player);
 
-    void action(Player player, ItemStack itemStack);
+    void action(Player player, String key);
 }

@@ -18,7 +18,7 @@ public class ListenerEvent implements Listener {
         }
         if(GuiManager.isGui(guiTitle)){
             Gui gui = GuiManager.getGuiByTitle(guiTitle);
-            gui.action(player, clickedItem);
+            gui.action(player, clickedItem.getItemMeta().getDisplayName());
             event.setCancelled(true);
         }
     }
