@@ -40,13 +40,10 @@ public class GuiDemo implements Gui {
     }
 
     @Override
-    public void action(Player player, ItemStack itemStack) {
-        if (itemStack == null) return;
+    public void action(Player player, String name) {
+        if (name == null) return;
 
-        ItemMeta meta = itemStack.getItemMeta();
-        if (meta == null || !meta.hasDisplayName()) return;
-
-        switch (meta.getDisplayName()) {
+        switch (name) {
             case "Profile":
                 player.sendMessage("profile");
                 break;
