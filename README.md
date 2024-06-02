@@ -1,7 +1,7 @@
 # Minecraft GUI Menu Plugin
 
 This library supports the creation of GUI menus for Minecraft servers using Bukkit/Spigot/Paper.
-- [X] Support SimpleForm GeyserMC
+- [X] Support automatically convert to UI SimpleForm PE
 ## Usage
 
 ### Register the GUI Menu
