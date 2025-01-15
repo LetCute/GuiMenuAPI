@@ -1,7 +1,6 @@
 # Minecraft GUI Menu Plugin
 
 This library supports the creation of GUI menus for Minecraft servers using Bukkit/Spigot/Paper.
-- [X] Support automatically convert to UI SimpleForm PE
 ## Usage
 
 ### Register the GUI Menu
@@ -21,6 +20,8 @@ public class GuiDemo implements Gui {
 
     private final String title;
 
+    private GuiBuilder guiBuilder;
+
     public GuiDemo(String title) {
         this.title = title;
     }
@@ -32,18 +33,21 @@ public class GuiDemo implements Gui {
 
     @Override
     public void open(Player player) {
-        GuiBuilder guiBuilder = new GuiBuilder(title, 54);
-        guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
-        guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
-        guiBuilder.createItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
+        if(guiBuilder == null){
+            guiBuilder = new GuiBuilder(title, 54);
+            guiBuilder.addItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
+            guiBuilder.addItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
+            guiBuilder.addItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
+        }
         guiBuilder.openMenu(player);
     }
 
     @Override
-    public void action(Player player, String name) {
-        if (name == null) return;
-
-        switch (name) {
+    public void action(GuiDataClick guiDataClick) {
+        ItemMeta meta = GuiDataClick.getItemStack().getItemMeta();
+        String displayName = meta.getDisplayName();
+        if (displayName == null) return;
+        switch (displayName) {
             case "Profile":
                 player.sendMessage("profile");
                 break;
@@ -70,16 +74,16 @@ action(): Handles item click events within the GUI.<br>
 
 The GuiBuilder class is used to build and manage the inventory GUI:<br>
 new GuiBuilder(title, 54): Creates a new GUI with the specified title and number of slots.<br>
-guiBuilder.createItem(Material, "DisplayName", lore ,position): Adds an item to the GUI at the specified position.<br>
+guiBuilder.addItem(Material, "DisplayName", lore ,position): Adds an item to the GUI at the specified position.<br>
 guiBuilder.openMenu(player): Opens the GUI for the specified player.<br>
 Example Code Snippets<br>
 #### Open Function
 ````java
 public void open(Player player) {
     GuiBuilder guiBuilder = new GuiBuilder(title, 54);
-    guiBuilder.createItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
-    guiBuilder.createItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
-    guiBuilder.createItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
+    guiBuilder.addItem(Material.PLAYER_HEAD, "Profile", Collections.singletonList("info player"), 11);
+    guiBuilder.addItem(Material.SPRUCE_SIGN, "Shop", Collections.singletonList("shop Item"), 12);
+    guiBuilder.addItem(Material.GRASS_BLOCK, "Island",  Collections.singletonList("Controller island"),13);
     guiBuilder.openMenu(player);
 }
 
@@ -90,10 +94,9 @@ GuiManager.openGui("GuiDemo2", player);<br>
 GuiDemo2 is the name of the gui registered in onEnable()
 ````java
 @Override
-public void action(Player player, ItemStack itemStack) {
-    if (itemStack == null) return;
+public void action(GuiDataClick guiDataClick) {
 
-    ItemMeta meta = itemStack.getItemMeta();
+    ItemMeta meta = GuiDataClick.getItemStack().getItemMeta();
     if (meta == null || !meta.hasDisplayName()) return;
 
     switch (meta.getDisplayName()) {

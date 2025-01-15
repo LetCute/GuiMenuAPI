@@ -9,16 +9,21 @@ import org.bukkit.inventory.ItemStack;
 public class ListenerEvent implements Listener {
 
     @EventHandler
-    public void onClickInventory(InventoryClickEvent event){
+    public void onClickInventory(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         String guiTitle = event.getView().getTitle();
         ItemStack clickedItem = event.getCurrentItem();
         if (clickedItem == null) {
             return;
         }
-        if(GuiManager.isGui(guiTitle)){
+        if (GuiManager.isGui(guiTitle)) {
             Gui gui = GuiManager.getGuiByTitle(guiTitle);
-            gui.action(player, clickedItem.getItemMeta().getDisplayName());
+            GuiDataClick guiDataClick = GuiDataClick.builder()
+                    .player(player)
+                    .itemStack(clickedItem)
+                    .slot(event.getSlot())
+                    .build();
+            gui.action(guiDataClick);
             event.setCancelled(true);
         }
     }

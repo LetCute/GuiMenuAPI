@@ -6,7 +6,7 @@ public final class GuiMenu extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("GuiMenu by LetCute Run");
-        GuiManager.registerGuiMenu(this);
+        getLogger().info("GuiMenu by LetCute Enabled");
+        getServer().getPluginManager().registerEvents(new ListenerEvent(), this);
     }
 }

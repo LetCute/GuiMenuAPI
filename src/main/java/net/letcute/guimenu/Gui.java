@@ -1,7 +1,6 @@
 package net.letcute.guimenu;
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public interface Gui {
 
@@ -9,5 +8,5 @@ public interface Gui {
 
     void open(Player player);
 
-    void action(Player player, String key);
+    void action(GuiDataClick guiDataClick);
 }
