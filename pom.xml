@@ -6,7 +6,7 @@
 
   <groupId>net.letcute</groupId>
   <artifactId>guimenuapi</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>GuiMenuAPI</name>
@@ -15,6 +15,14 @@
     <java.version>8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub LetCute Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/LetCute/GuiMenuAPI</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <plugins>

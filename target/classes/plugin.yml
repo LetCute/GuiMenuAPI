@@ -1,5 +1,5 @@
 name: GuiMenuAPI
-version: '1.0.1'
+version: '1.0.2'
 main: net.letcute.guimenu.GuiMenu
 api-version: '1.16'
 author: LetCute
