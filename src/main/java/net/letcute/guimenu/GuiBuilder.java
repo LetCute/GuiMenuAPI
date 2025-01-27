@@ -29,6 +29,11 @@ public class GuiBuilder {
         return this;
     }
 
+    public GuiBuilder addItem(ItemStack itemStack, int slot) {
+        inventory.setItem(slot, itemStack);
+        return this;
+    }
+
     public void openMenu(Player player) {
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null.");
